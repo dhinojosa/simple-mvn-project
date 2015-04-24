@@ -63,7 +63,8 @@ public class VerifyNewAlbum {
     @SuppressWarnings("ConstantConditions")
     private void setChromeSystemProperty(String osName) {
         System.setProperty("webdriver.chrome.driver",
-                getClass().getClassLoader().getResource(osName + "/chromedriver").getPath());
+//                getClass().getClassLoader().getResource(osName + "/chromedriver").getPath());
+                VerifyNewAlbum.class.getResource("/" + osName + "/chromedriver").getPath());
     }
 
     @Test
