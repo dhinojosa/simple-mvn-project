@@ -1,21 +1,13 @@
 package com.evolutionnext.selenium;
 
-import com.evolutionnext.junit.category.ChromeTest;
-import com.evolutionnext.junit.category.FirefoxTest;
-import com.evolutionnext.junit.category.IETest;
-import com.evolutionnext.junit.category.SafariTest;
-import com.evolutionnext.selenium.WindowsTest;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
-
-import java.io.IOException;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -26,49 +18,45 @@ public class VerifyNewAlbum {
 
     @Before
     public void setUp() throws Exception {
-        baseUrl = "http://54.188.233.107:8080";
-    }
+        baseUrl = System.getenv("selenium_baseurl");
+        if (baseUrl == null) throw new NullPointerException("selenium_baseurl not set");
 
-    @Before
-    @Category(value={FirefoxTest.class})
-    public void setUpFirefox() {
-        driver = new FirefoxDriver();
-    }
+        String selenium_browser = System.getenv("selenium_browser");
+        if (selenium_browser == null) throw new NullPointerException("selenium_browser not set");
 
-
-    @Before
-    @Category(value={IETest.class})
-    public void setUpIETest() {
-        driver = new InternetExplorerDriver();
-    }
-
-    @Before
-    @Category(value={SafariTest.class})
-    public void setUpSafariTest() {
-        driver = new SafariDriver();
-    }
-
-    @Before
-    @Category(value = {ChromeTest.class})
-    public void setUpChrome() {
-        String osName = System.getProperty("os.name");
-        String osArch = System.getProperty("os.arch");
-        switch (osName) {
-            case "Windows":
-                setChromeSystemProperty("chromedriver-windows32");
+        switch (selenium_browser) {
+            case "Firefox":
+                driver = new FirefoxDriver();
                 break;
-            case "MacOSX":
-                setChromeSystemProperty("chromedriver-mac32");
+            case "IE":
+                driver = new InternetExplorerDriver();
                 break;
-            case "Linux":
-                if (osArch.equals("amd64")) {
-                    setChromeSystemProperty("chromedriver-linux64");
-                } else {
-                    setChromeSystemProperty("chromedriver-linux32");
+            case "Safari":
+                driver = new SafariDriver();
+                break;
+            case "Chrome":
+                String osName = System.getProperty("os.name");
+                String osArch = System.getProperty("os.arch");
+                switch (osName) {
+                    case "Windows":
+                        setChromeSystemProperty("chromedriver-windows32");
+                        break;
+                    case "MacOSX":
+                        setChromeSystemProperty("chromedriver-mac32");
+                        break;
+                    case "Linux":
+                        if (osArch.equals("amd64")) {
+                            setChromeSystemProperty("chromedriver-linux64");
+                        } else {
+                            setChromeSystemProperty("chromedriver-linux32");
+                        }
+                        break;
                 }
+                driver = new ChromeDriver();
                 break;
+            default:
+                throw new RuntimeException("No browser specified");
         }
-        driver = new ChromeDriver();
     }
 
 
@@ -77,7 +65,6 @@ public class VerifyNewAlbum {
         System.setProperty("webdriver.chrome.driver",
                 getClass().getClassLoader().getResource(osName + "/chromedriver").getPath());
     }
-
 
     @Test
     public void testPage() throws InterruptedException {
@@ -89,5 +76,4 @@ public class VerifyNewAlbum {
         assertThat(driver.getTitle()).isEqualTo("List of Albums");
         driver.quit();
     }
-
 }
