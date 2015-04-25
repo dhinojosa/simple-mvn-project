@@ -37,21 +37,21 @@ public class VerifyNewAlbum {
             case "Chrome":
                 String osName = System.getProperty("os.name");
                 String osArch = System.getProperty("os.arch");
-                switch (osName) {
-                    case "Windows":
-                        setChromeSystemProperty("chromedriver-windows32");
-                        break;
-                    case "MacOSX":
-                        setChromeSystemProperty("chromedriver-mac32");
-                        break;
-                    case "Linux":
-                        if (osArch.equals("amd64")) {
-                            setChromeSystemProperty("chromedriver-linux64");
-                        } else {
-                            setChromeSystemProperty("chromedriver-linux32");
-                        }
-                        break;
-                }
+//                switch (osName) {
+//                    case "Windows":
+//                        setChromeSystemProperty("chromedriver-windows32");
+//                        break;
+//                    case "MacOSX":
+//                        setChromeSystemProperty("chromedriver-mac32");
+//                        break;
+//                    case "Linux":
+//                        if (osArch.equals("amd64")) {
+//                            setChromeSystemProperty("chromedriver-linux64");
+//                        } else {
+//                            setChromeSystemProperty("chromedriver-linux32");
+//                        }
+//                        break;
+//                }
                 driver = new ChromeDriver();
                 break;
             default:
