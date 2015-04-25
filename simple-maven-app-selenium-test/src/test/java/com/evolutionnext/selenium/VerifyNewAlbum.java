@@ -15,6 +15,7 @@ public class VerifyNewAlbum {
 
     private String baseUrl;
     private WebDriver driver;
+    private String chromeDriverUrl;
 
     @Before
     public void setUp() throws Exception {
@@ -23,6 +24,9 @@ public class VerifyNewAlbum {
 
         String selenium_browser = System.getenv("selenium_browser");
         if (selenium_browser == null) throw new NullPointerException("selenium_browser not set");
+
+        chromeDriverUrl = System.getenv("chrome_driver_url");
+        if (chromeDriverUrl == null) throw new NullPointerException("chrome_driver_url not set");
 
         switch (selenium_browser) {
             case "Firefox":
@@ -62,8 +66,7 @@ public class VerifyNewAlbum {
 
     @SuppressWarnings("ConstantConditions")
     private void setChromeSystemProperty(String osName) {
-        System.setProperty("webdriver.chrome.driver",
-                VerifyNewAlbum.class.getResource("/" + osName).getPath());
+        System.setProperty("webdriver.chrome.driver", chromeDriverUrl + "/" + osName);
     }
 
     @Test
