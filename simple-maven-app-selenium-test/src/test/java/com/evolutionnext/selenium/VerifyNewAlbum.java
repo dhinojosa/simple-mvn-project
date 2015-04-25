@@ -66,6 +66,7 @@ public class VerifyNewAlbum {
 
     @SuppressWarnings("ConstantConditions")
     private void setChromeSystemProperty(String osName) {
+        System.out.println("Web driver location used: " + chromeDriverUrl + "/" + osName);
         System.setProperty("webdriver.chrome.driver", chromeDriverUrl + "/" + osName);
     }
 
