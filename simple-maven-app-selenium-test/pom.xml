@@ -104,7 +104,6 @@
                     <includes>
                         <include>**/*.java</include>
                     </includes>
-                    <groups>com.evolutionnext.selenium.FirefoxTest,com.evolutionnext.selenium.ChromeTest</groups>
                 </configuration>
                 <executions>
                     <execution>
