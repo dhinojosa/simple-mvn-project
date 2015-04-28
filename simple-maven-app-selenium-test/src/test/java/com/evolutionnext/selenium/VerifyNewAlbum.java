@@ -43,7 +43,7 @@ public class VerifyNewAlbum {
                 String osArch = System.getProperty("os.arch");
                 switch (osName) {
                     case "Windows":
-                        setChromeSystemProperty("chromedriver-windows32.exe");
+                        setChromeSystemProperty("chromedriver-window32.exe");
                         break;
                     case "MacOSX":
                         setChromeSystemProperty("chromedriver-mac32");
