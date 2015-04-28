@@ -41,6 +41,8 @@ public class VerifyNewAlbum {
             case "Chrome":
                 String osName = System.getProperty("os.name");
                 String osArch = System.getProperty("os.arch");
+                System.out.println("os.name" + osName);
+                System.out.println("os.arch" + osArch);
                 switch (osName) {
                     case "Windows":
                         setChromeSystemProperty("chromedriver-windows32.exe");
