@@ -13,6 +13,6 @@ public class AlbumTest {
         album.setName("Rumours");
         album.setId(13L);
         assertThat(album.getName()).isEqualTo("Rumours");
-        assertThat(album.getId()).isEqualTo(13L);
+        assertThat(album.getId()).isEqualTo(14L);
     }
 }
