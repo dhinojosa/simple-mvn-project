@@ -44,7 +44,10 @@ public class VerifyNewAlbum {
                 System.out.println("os.name" + osName);
                 System.out.println("os.arch" + osArch);
                 switch (osName) {
-                    case "Windows":
+                    case "Windows 8.1":
+                        setChromeSystemProperty("chromedriver-window32.exe");
+                        break;
+                    case "Windows 7":
                         setChromeSystemProperty("chromedriver-window32.exe");
                         break;
                     case "MacOSX":

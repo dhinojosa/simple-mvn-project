@@ -2,4 +2,4 @@
 
 ## A Maven Project used for Jenkins Training.
 
-Instructions to come soon.
+This is a simple project used to test Jenkins.
