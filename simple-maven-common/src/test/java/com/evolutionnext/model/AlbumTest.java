@@ -15,4 +15,7 @@ public class AlbumTest {
         assertThat(album.getName()).isEqualTo("Rumours");
         assertThat(album.getId()).isEqualTo(13L);
     }
+    
+    
+    
 }
