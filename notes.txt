@@ -1,0 +1,37 @@
+java -jar jenkins-1.xxx.war 
+
+http://jenkins-ci.org/
+[:alpha:]+-[:alpha:]+-(unit|integration|system|security)
+
+C:\Program Files\Java\jdk-** (Windows)
+/Library/Java/JavaVirtualMachines/jdk-**/Contents/Home (Mac)
+
+host:echosmtp1.dish.com
+port: 25
+No user, no password
+No SSL
+
+https://github.com/dhinojosa/simple-mvn-project
+
+git config --global http.proxy http://firstname.lastname:password@proxy:8080
+
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
+
+git reset --hard HEAD
+
+java -cp "*" org.junit.runner.JUnitCore[space] com.evolutionnext.services.
+AlbumServiceBeanIntegrationIntTest
+
+
+
+
+
+
+
+
+
+
+
+
+
