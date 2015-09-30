@@ -16,7 +16,7 @@ public class AlbumTest {
         assertThat(album.getId()).isEqualTo(13L);
 
         //Below are changed made by Hao to fix it
-        album.setId(15L);
+        album.setId(17L);
 	assertThat(album.getId()).isEqualTo(17L);
     }
 }
