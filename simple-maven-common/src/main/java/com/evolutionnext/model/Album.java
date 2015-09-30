@@ -38,4 +38,9 @@ public class Album {
     public void setId(Long id) {
         this.id = id;
     }
+
+    //Below are the changes of code coverage
+    public void breakCoverage(){
+        System.out.println("This shall change the code coverage");
+    }
 }
