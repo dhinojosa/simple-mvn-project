@@ -22,7 +22,7 @@ public class CalcStatsTest {
         List<Integer> integers = new ArrayList<Integer>();
         integers.add(5);
         CalcStats calcStats = new CalcStats(integers);
-        assertEquals(new Integer(1), calcStats.getMinimum());
+        assertEquals(new Integer(5), calcStats.getMinimum());
     }
 
     @Test
