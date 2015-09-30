@@ -54,5 +54,9 @@ public class AlbumServiceBeanIntegrationIntTest {
         albumServiceBean.init();
         albumServiceBean.getAlbum().setName("Zeppelin 5");
         albumServiceBean.create();
+        
+        albumServiceBean.init();
+        albumServiceBean.getAlbum().setName("Zeppelin 6");
+        albumServiceBean.create();
     }
 }
