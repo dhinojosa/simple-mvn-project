@@ -13,10 +13,6 @@ public class AlbumTest {
         album.setName("Rumours");
         album.setId(13L);
         assertThat(album.getName()).isEqualTo("Rumours");
-        assertThat(album.getId()).isEqualTo(13L);
-
-        //Below are changed made by Hao to fix it
-        album.setId(17L);
-	assertThat(album.getId()).isEqualTo(17L);
+        assertThat(album.getId()).isEqualTo(16L);
     }
 }
