@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        tool(name: 'apache-maven-3.2.5', type: 'maven')
+        tool(name: 'apache-maven-3.5.2', type: 'maven')
         script {
           if (isUnix()) {
             sh "mvn package"
