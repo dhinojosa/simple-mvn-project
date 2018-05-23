@@ -10,10 +10,12 @@ pipeline {
         echo 'Unit'
         echo 'Running Maven Version'
         sh 'mvn -v'
-        if (isUnix()) {
-           sh '${M2_HOME}/bin/mvn -pl install'
-        } else {
-           bat '${M2_HOME}\\bin\\mvn install'
+        script {
+           if (isUnix()) {
+              sh 'mvn -pl install'
+           } else {
+              bat 'mvn install'
+           }
         }
       }
       post {
