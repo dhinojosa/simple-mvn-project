@@ -12,6 +12,7 @@ pipeline {
           }
         }
 
+        archiveArtifacts(artifacts: '**/target/**/*.jar', fingerprint: true, onlyIfSuccessful: true)
       }
     }
     stage('Integration') {
