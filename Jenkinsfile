@@ -3,8 +3,9 @@ pipeline {
 
   stages {
     stage('Unit') {
-      def mvnHome = tool 'apache-maven-3.5.2'
+
       steps {
+        def mvnHome = tool 'apache-maven-3.5.2'
         echo 'Unit'
       }
     }
