@@ -12,9 +12,9 @@ pipeline {
         sh 'mvn -v'
         script {
            if (isUnix()) {
-              sh 'mvn install'
+              sh 'mvn test'
            } else {
-              bat 'mvn install'
+              bat 'mvn test'
            }
         }
       }
