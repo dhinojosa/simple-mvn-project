@@ -21,7 +21,7 @@ pipeline {
       post {
         always {
           archive "**/target/**/*.jar"
-          junit 'simple-maven-app/target/surefire-reports/*.xml'
+          junit 'simple-maven-common/target/surefire-reports/*.xml'
         }
       }
     }
