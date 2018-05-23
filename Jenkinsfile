@@ -8,6 +8,19 @@ pipeline {
     stage('Unit') {
       steps {
         echo 'Unit'
+        echo 'Running Maven Version'
+        sh 'mvn -v'
+        if (isUnix()) {
+           sh '${M2_HOME}/bin/mvn -pl install'
+        } else
+           bat '${M2_HOME}\\bin\\mvn install'
+        }
+      }
+      post {
+        always {
+          archive "**/target/**/*.jar"
+          junit 'simple-maven-app/target/surefire-reports/*.xml'
+        }
       }
     }
     stage('Integration') {
