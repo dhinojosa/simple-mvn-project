@@ -12,7 +12,7 @@ pipeline {
         sh 'mvn -v'
         script {
            if (isUnix()) {
-              sh 'mvn -pl install'
+              sh 'mvn install'
            } else {
               bat 'mvn install'
            }
