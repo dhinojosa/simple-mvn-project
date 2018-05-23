@@ -11,9 +11,12 @@ pipeline {
             bat "mvn package"
           }
         }
-
-        archiveArtifacts(artifacts: '**/target/**/*.jar', fingerprint: true, onlyIfSuccessful: true)
-        junit 'simple-maven-common/target/surefire-reports/*.xml'
+      }
+      post {
+         always {
+            archiveArtifacts(artifacts: '**/target/**/*.jar', fingerprint: true, onlyIfSuccessful: true)
+            junit 'simple-maven-common/target/surefire-reports/*.xml'
+         }
       }
     }
     stage('Integration') {
