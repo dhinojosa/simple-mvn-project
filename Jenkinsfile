@@ -1,10 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('Unit Testing') {
+    stage('Unit') {
       steps {
-        build 'Unit Testing'
-        sh 'sh "${mvnHome}/bin/mvn -B verify"'
+        echo 'Unit'
+      }
+    }
+    stage('Integration') {
+      steps {
+        echo 'Integration'
       }
     }
   }
