@@ -8,9 +8,9 @@ pipeline {
         sh 'mvn -v'
         script {
           if (isUnix()) {
-            sh 'mvn test'
+            sh 'mvn package'
           } else {
-            bat 'mvn test'
+            bat 'mvn package'
           }
         }
 
