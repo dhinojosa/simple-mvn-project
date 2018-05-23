@@ -20,7 +20,7 @@ pipeline {
       }
       post {
         always {
-          archive "**/target/**/*.jar"
+          archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
           junit 'simple-maven-common/target/surefire-reports/*.xml'
         }
       }
