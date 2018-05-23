@@ -12,7 +12,7 @@ pipeline {
         sh 'mvn -v'
         if (isUnix()) {
            sh '${M2_HOME}/bin/mvn -pl install'
-        } else
+        } else {
            bat '${M2_HOME}\\bin\\mvn install'
         }
       }
