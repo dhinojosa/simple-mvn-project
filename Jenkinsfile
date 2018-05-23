@@ -14,5 +14,10 @@ pipeline {
 
       }
     }
+    stage('Integration') {
+      steps {
+        sh 'echo "Integration"'
+      }
+    }
   }
 }
