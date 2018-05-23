@@ -13,6 +13,7 @@ pipeline {
         }
 
         archiveArtifacts(artifacts: '**/target/**/*.jar', fingerprint: true, onlyIfSuccessful: true)
+        junit '**/target/surefire-reports/*.xml'
       }
     }
     stage('Integration') {
