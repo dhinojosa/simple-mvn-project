@@ -25,7 +25,7 @@ pipeline {
     stage('Integration') {
       steps {
         sh 'echo "Integration"'
-        mail(body: 'Current Build status is ${BUILD_STATUS}', subject: 'Build ${BUILD_ID}', to: 'dhinojosa@evolutionnext.com', mimeType: 'text/html')
+        mail(body: 'Current Build status is ${env.BUILD_STATUS}', subject: 'Build ${env.BUILD_ID}', to: 'dhinojosa@evolutionnext.com', mimeType: 'text/html')
       }
     }
   }
