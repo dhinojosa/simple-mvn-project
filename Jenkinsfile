@@ -17,15 +17,17 @@ pipeline {
         always {
           archiveArtifacts(artifacts: '**/target/**/*.jar', fingerprint: true, onlyIfSuccessful: true)
           junit 'simple-maven-common/target/surefire-reports/*.xml'
-
         }
-
       }
     }
     stage('Integration') {
       steps {
         sh 'echo "Integration"'
-        mail(body: 'Current Build status is ${env.BUILD_STATUS}', subject: 'Build ${env.BUILD_ID}', to: 'dhinojosa@evolutionnext.com', mimeType: 'text/html')
+      }
+      post {
+         always {
+            mail(body: 'Current Build status is ${env.BUILD_STATUS}', subject: 'Build ${env.BUILD_ID}', to: 'dhinojosa@evolutionnext.com', mimeType: 'text/html')
+         }
       }
     }
   }
