@@ -17,6 +17,17 @@ pipeline {
          always {
             junit '**/target/surefire-reports/*.xml'
             archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
+            emailext body: '''Here is the result email trying different variants
+
+            env.BUILD_ID = ${env.BUILD_ID}
+            BUILD_ID = ${BUILD_ID}
+            currentBuild.result = ${currentBuild.result}
+            result = ${result}''',
+                     mimeType: 'text/html',
+                     recipientProviders: [culprits()],
+                     replyTo: 'dhinojosa@evolutionnext.com',
+                     subject: '${BUILD_ID} is ${currentBuild.result}',
+                     to: 'dhinojosa@evolutionnext.com'
          }
       }
     }
