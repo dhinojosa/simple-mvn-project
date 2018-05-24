@@ -16,7 +16,7 @@ pipeline {
       post {
          always {
             archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
-            junit 'simple-maven-common/target/surefire-reports/*.xml'
+            junit '**/target/surefire-reports/*.xml'
          }
       }
     }
