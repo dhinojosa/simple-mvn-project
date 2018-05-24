@@ -11,6 +11,7 @@ pipeline {
           }
         }
 
+        tool(name: 'apache-maven-3.5.2', type: 'maven')
       }
     }
   }
