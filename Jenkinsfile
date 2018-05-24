@@ -13,6 +13,12 @@ pipeline {
 
         tool(name: 'apache-maven-3.5.2', type: 'maven')
       }
+      post {
+         always {
+            archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
+            junit 'simple-maven-common/target/surefire-reports/*.xml'
+         }
+      }
     }
   }
 }
