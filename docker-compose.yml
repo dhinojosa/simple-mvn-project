@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  jenkins:
+    container_name: jenkins
+    restart: always
+    image: dhinojosa/java8-jenkins-maven-git-vim
+    ports:
+    - "8080:8080"
+    volumes:
+    - ~/docker/jenkins_home:/jenkins
