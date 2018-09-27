@@ -1,35 +1,31 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        script {
-          if (isUnix()) {
-            sh "mvn package"
-          } else {
-            bat "mvn package"
-          }
-        }
-
-        tool(name: 'apache-maven-3.5.2', type: 'maven')
-      }
-      post {
-         always {
-            junit '**/target/surefire-reports/*.xml'
-            archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
-            emailext body: '''Here is the result email trying different variants
-
-            env.BUILD_ID = ${env.BUILD_ID}
-            BUILD_ID = ${BUILD_ID}
-            currentBuild.result = ${currentBuild.result}
-            result = ${result}''',
-                     mimeType: 'text/html',
-                     recipientProviders: [culprits()],
-                     replyTo: 'dhinojosa@evolutionnext.com',
-                     subject: '${BUILD_ID} is ${currentBuild.result}',
-                     to: 'dhinojosa@evolutionnext.com'
-         }
-      }
-    }
+node('Master') {
+  def mvnHome
+  stage('Preparation') { // for display purposes
+       // Get some code from a GitHub repository
+       git 'https://github.com/dhinojosa/simple-mvn-project.git'
+       // Get the Maven tool.
+       // ** NOTE: This 'apache-maven-3.5.4' Maven tool must be configured
+       // **       in the global configuration.
+       mvnHome = tool 'apache-maven-3.5.4'
   }
+  stage('Build') {
+       // Run the maven build
+       if (isUnix()) {
+          sh "'${mvnHome}/bin/mvn' clean package"
+       } else {
+          bat(/"${mvnHome}\bin\mvn" clean package/)
+       }
+  }
+  stage('Results') {
+       junit 'simple-maven-common/target/surefire-reports/TEST-*.xml'
+       archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+  }
+}
+node('Linux') {
+   stage("Integration Test") {
+      javaHome = tool 'java-1.8.0_162'
+      sh "'${javaHome}/bin/java' -cp 'simple-maven-common/target/*:simple-maven-app-integration-test/target/*' org.junit.runner.JUnitCore com.evolutionnext.services.AlbumServiceBeanIntegrationIntTest"
+   }
+}
 }
